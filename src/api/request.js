@@ -22,6 +22,7 @@ const makeRequest = async (url, method, params, data) => {
     "Content-Type": "application/json",
     Authorization: auth && auth.token ? `Bearer ${auth.token}` : "",
   };
+  console.log({headers, org,auth});
   if (org) {
     headers["X-Organization"] = org.id;
   }
@@ -32,7 +33,7 @@ const makeRequest = async (url, method, params, data) => {
     params,
     data,
   };
-
+ console.log({config});
   try {
     const response = await axios(config);
     console.log(
@@ -40,10 +41,11 @@ const makeRequest = async (url, method, params, data) => {
       "background: teal; color: white; font-weight: bold; font-size: 12px",
       response.data.success
     );
-
+    console.log({response,data: response.data, status: response.status,err: response.data.error});
     return response.data;
 
   } catch (error) {
+    console.log({error});
     if (error.response.status === 401) {
       console.log(error?.response?.data?.error );
       localStorage.removeItem("auth");
