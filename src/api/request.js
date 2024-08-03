@@ -33,7 +33,7 @@ const makeRequest = async (url, method, params, data) => {
     params,
     data,
   };
- console.log({config});
+ console.log({config,url});
   try {
     const response = await axios(config);
     console.log(
