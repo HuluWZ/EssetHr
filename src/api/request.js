@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
 
-const apiURL = "/api/v1";
+const apiURL = `${process.env.REACT_APP_API_URL}/api/v1`;
 
 const getAuth = () => {
   const auth = localStorage.getItem("auth");
